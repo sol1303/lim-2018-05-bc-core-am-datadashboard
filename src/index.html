@@ -1,12 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Data Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>DATA DASHBOARD</title>
   </head>
   <body>
-    <h1>Hola Mundo</h1>
-    <script src="main.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans" rel="stylesheet">
+  <section class="grid-container clearfix">
+    <div class="col-3 menu">
+    <div class="userInfo">
+      <img src="img/Laboratoria.png" class="logo">
+      <img src="img/user.png" alt="User" class="iconUser">
+    <div class="userName">
+      <p>Nombre</p>
+      <p>Cargo</p>
+    </div>
+    </div>
+      <div class="buttonMenu">
+        <button><i class="material-icons">group</i> General</button>
+        <button><i class="material-icons">local_library</i> Por Curso</button>
+        <button><i class="material-icons">school</i> Por Alumna</button>
+      </div>
+      <div class="buttonMenu2">
+        <button><i class="material-icons">keyboard_backspace</i> Volver</button>
+        <button><i class="material-icons">clear</i> Cerrar Sesión</button>
+      </div>
+    </div>
+    <div class="col-9 main">
+      <img src="img/dashboard.png" class="logoHome">
+      <form class="col-7 formStyle">
+        <p class="tittle">Seleccione</p>
+        <div class="options">
+        <label for="sede">Sede</label>
+          <select id="sede">
+            <option>LIM</option>
+            <option>CDMX</option>
+            <option>SANTIAGO</option>
+            </select>
+        </div>
+        <div class="options">
+        <label for="product">Producto</label>
+          <select id="product">
+            <option>Pre-Core</option>
+            <option>Selección</option>
+            <option>Bootcamp</option>
+            <option>Job Placement</option>
+          </select>
+        </div>
+        <div class="options">
+        <label for="promotion">Promoción</label>
+          <select id="promotion">
+            <option>2018-I</option>
+            <option>2018-II</option>
+            <option>2019-I</option>
+          </select>
+        </div>
+        <div class="options">
+        <label for="turn">Turno</label>
+          <select id="turn">
+            <option>AM</option>
+            <option>PM</option>
+          </select>
+        </div>
+        <input type="submit" value="Ingresar">
+      </form>
+      <img src="img/arrow.png" class="deco">
+    </div>
+  </section>
+  <script src="main.js"></script>
   </body>
 </html>

@@ -1,0 +1,163 @@
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 15%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.invisible {
+  display: none;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  text-align: center;
+  border-right: 0.035em solid #bebebe; 
+}
+.main {
+  position: relative;
+  float: left;
+  padding: 15px;
+}
+
+.formStyle {
+  margin-top: 3%;
+  margin-left: 20%;
+  padding: 1%;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  height: 20em;
+  border-radius: 1.5em;
+}
+
+.options {
+  display: inline-block;
+  padding-left: 4%;
+  padding-right: 4%;
+  text-align: center;
+}
+
+.options label{
+  display: block;
+}
+
+.formStyle input {
+  font-size: 1.2em;
+  margin: 10%;
+  background-color: #ffe521;
+  padding: 0.75em;
+  border: 0;
+  border-radius: 0.5em;
+}
+
+select {
+  margin-top: 2em;
+}
+
+img.logo {
+  margin-left: -0.5em;
+  width: 110%;
+}
+
+img.logoHome {
+  width: 50%;
+}
+
+img.iconUser {
+  width: 45%;
+  margin-top: 10%;
+  margin-bottom: 8%;
+}
+
+p.tittle {
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Bitter', serif;
+  margin-bottom: 1em;
+}
+
+.buttonMenu  button{
+  text-align: left;
+  font-size: 1em;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 24px;
+  cursor: pointer;
+  display: block;
+  border: none;
+  width: 100%;
+  border-bottom: 0.035em solid #bebebe;
+}
+.buttonMenu button:hover {
+  background-color: #ffe521;
+}
+.buttonMenu{
+  margin-bottom: 60%;
+}
+
+.buttonMenu2 {
+  border-top: 0.035em solid #bebebe;
+}
+
+.buttonMenu2  button{
+  text-align: left;
+  font-size: 1em;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 24px;
+  cursor: pointer;
+  display: block;
+  border: none;
+  width: 100%;
+  border-bottom: 0.035em solid #bebebe;
+}
+.buttonMenu2 button:hover {
+  background-color: #ffe521;
+}
+
+i {
+  margin-right: 1em;
+  color: #646464;
+}
+.userInfo {
+  background: #fafafa;
+  padding: 1em;
+  border-bottom: 0.035em solid #bebebe;
+  height: 100%;
+}
+
+.userName {
+  margin-top: -1em;
+  font-size: 1em;
+}
+
+img.deco {
+  position: absolute;
+  width: 30%;
+  height: auto;
+  right: 0%;
+  top: 11%;
+  z-index: -1;
+}
