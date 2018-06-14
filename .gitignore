@@ -1,12 +1,6 @@
 .DS_Store
 *.swp
-<<<<<<< HEAD
-package-lock.json
-.nyc_output/
-node_modules/
-=======
 .nyc_output/
 coverage/
 node_modules/
 package-lock.json
->>>>>>> ab40ce1c7038a0d9169b23eec5d50808e441c6c3
