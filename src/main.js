@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const requestURLCohorts = '../data/cohorts.json';
 const requestURLProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const requestURLUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
@@ -42,11 +41,9 @@ for (const iterator of object) {
 */
 
  
-=======
 let buttonEnter = () => {
     document.getElementById('main').style.display = 'none'; 
     document.getElementsByClassName('data')[0].style.display = 'initial'
 };
 
 document.getElementById('enter').addEventListener('click', buttonEnter);
->>>>>>> 05d0f1c8535043a511abb09bdf8c3d3ba7466c46
