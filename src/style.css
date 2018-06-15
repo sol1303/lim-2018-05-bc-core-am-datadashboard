@@ -6,7 +6,7 @@
 .col-6 {width: 50%;}
 .col-7 {width: 58.33%;}
 .col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
+.col-9 {width: 85%;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
@@ -63,13 +63,23 @@ body {
   display: block;
 }
 
-.formStyle input {
+/*.formStyle input {
   font-size: 1.2em;
   margin: 10%;
   background-color: #ffe521;
   padding: 0.75em;
   border: 0;
   border-radius: 0.5em;
+} Queda pendiente para cuando el botón de ingresar sea input*/ 
+
+#enter {
+  font-size: 1.2em;
+  margin: 10%;
+  background-color: #ffe521;
+  padding: 0.75em;
+  border: 0;
+  border-radius: 0.5em;
+  cursor: pointer;
 }
 
 select {
@@ -160,4 +170,72 @@ img.deco {
   right: 0%;
   top: 11%;
   z-index: -1;
+}
+
+.data{
+  display: none;
+  float:left;
+}
+
+#info {
+  border: 1px solid #646464;
+  margin-bottom: 2%;
+  display: block;
+  margin-left: 70%;
+  margin-right: 5%;
+}
+#infoA {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.order {
+margin-right: 60%;
+margin-bottom: 5%;
+}
+
+.student {
+  float: left;
+  border: 1px solid #646464;
+  width: 20%;
+  margin-left: 4%;
+  padding: 2%;
+}
+
+.student table {
+  text-align: left;
+  font-size: 0.85em;
+}
+
+.student p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.student button {
+  font-size: 1.2em;
+  margin-top: 10%;
+  width: 100%;
+  background-color: #ffe521;
+  padding: 0.75em;
+  border: 0;
+  cursor: pointer;
+}
+.student button:hover {
+  background-color: #bebebe;
+}
+
+.order i {
+  cursor: pointer;
+  color: #000000;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #ffe521;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border: 0;
+  border-radius: 0.5em;
+}
+
+.order select {
+  margin-right: 1em;
 }
