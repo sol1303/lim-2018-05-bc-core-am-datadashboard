@@ -31,7 +31,6 @@ let buttonEnter = () => {
        createCard(std);
   };
   
-  document.getElementById('enter').addEventListener('click', buttonEnter);
   
   function createCard(student) {
       let divTab = document.createElement('DIV');
@@ -77,7 +76,6 @@ let buttonEnter = () => {
   
   const createCardRow = (key, value) => {
     let row = document.createElement('TR');
-    row.setAttribute('id', 'myTr2');
     
   
     let cell = document.createElement('TD');
@@ -92,3 +90,63 @@ let buttonEnter = () => {
   
     return row; 
   }
+
+  
+
+
+
+const requestURLCohorts = '../data/cohorts.json';
+const cohortsRequest = new XMLHttpRequest();
+const requestURLUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const usersRequest = new XMLHttpRequest();
+const requestURLProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const progressRequest = new XMLHttpRequest();
+
+
+getCohorts = () => {
+  const cohortsJSON = JSON.parse(cohortsRequest.responseText);
+  let cohort;
+  for (const cohortFound of cohortsJSON ){
+    if(cohortFound===cohortsJSON[31]){ 
+      cohort = cohortFound;
+    }
+  }
+  getUsers(cohort); //se pasa el arreglo del cohort en cuestion
+  document.getElementById('enter').addEventListener('click', buttonEnter);
+};
+
+getUsers = (cohorts) => {
+  usersRequest.open('GET', requestURLUsers);
+  usersRequest.onload =() =>{
+  const usersJSON = JSON.parse(usersRequest.responseText);
+  getProgress(cohorts,usersJSON); //pasa el cohort y los usuarios del cohort
+  };
+  usersRequest.send();
+};
+
+getProgress = (cohorts,users) =>{
+  progressRequest.open('GET', requestURLProgress);
+  progressRequest.onload = () =>{
+   const progressJSON = JSON.parse(progressRequest.responseText);
+      const options = { //este objeto es el que piden para la funcion que engloba las 3 funciones en el data.js
+          cohort: cohorts,
+          cohortData: {
+          users: users, 
+          progress: progressJSON
+          },
+          orderBy: '', //String con criterio de ordenado (ver sortUsers).
+          orderDirection: '', //String con dirección de ordenado (ver sortUsers).
+          search: '' //String de búsqueda (ver filterUsers)
+       };
+      datadashboard.processCohortData(options); //aqui se utiliza el objeto options
+      
+
+  };
+  progressRequest.send(); 
+};
+
+
+
+cohortsRequest.open('GET', requestURLCohorts);
+cohortsRequest.onload = getCohorts;
+cohortsRequest.send();
