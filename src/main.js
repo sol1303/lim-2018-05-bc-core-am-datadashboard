@@ -123,6 +123,7 @@ getUsers = (cohorts) => {
   usersRequest.open('GET', requestURLUsers);
   usersRequest.onload =() =>{
   const usersJSON = JSON.parse(usersRequest.responseText);
+
   getProgress(cohorts,usersJSON); //pasa el cohort y los usuarios del cohort
   };
   usersRequest.onerror = handleError;
@@ -144,7 +145,7 @@ getProgress = (cohorts,users) =>{
           search: '' //String de búsqueda (ver filterUsers)
        };
       datadashboard.processCohortData(options); //aqui se utiliza el objeto options
-      
+
 
   };
   progressRequest.onerror = handleError;
@@ -157,3 +158,4 @@ cohortsRequest.open('GET', requestURLCohorts);
 cohortsRequest.onload = getCohorts;
 cohortsRequest.onerror = handleError;
 cohortsRequest.send();
+
