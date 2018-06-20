@@ -24,6 +24,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  font-size: 100%;
 }
 
 * {
@@ -179,10 +180,11 @@ img.deco {
 
 #info {
   border: 1px solid #646464;
+  margin-top: 2%;
   margin-bottom: 2%;
-  display: block;
   margin-left: 70%;
   margin-right: 5%;
+  display: block;
 }
 #infoA {
   font-size: 1.5em;
@@ -199,17 +201,19 @@ margin-bottom: 5%;
   border: 1px solid #646464;
   width: 20%;
   margin-left: 4%;
+  margin-bottom: 3%;
   padding: 2%;
 }
 
 .student table {
   text-align: left;
-  font-size: 0.85em;
+  font-size: 0.93em;
 }
 
-.student p {
+.student caption {
   font-size: 1.2em;
   font-weight: bold;
+  margin-bottom: 10%;
 }
 
 .student button {
