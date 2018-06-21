@@ -228,8 +228,6 @@ getUsers = (cohorts) => {
   usersRequest.onload =() =>{
   const usersJSON = JSON.parse(usersRequest.responseText);
   const usersCohort = usersJSON.filter(userFilter => userFilter.signupCohort === cohorts.id); //filtrado usuarios por cohort
-
-
   getProgress(cohorts,usersCohort); //pasa el cohort y los usuarios del cohort
   };
   usersRequest.onerror = handleError;
