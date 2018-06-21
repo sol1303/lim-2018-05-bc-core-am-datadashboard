@@ -22,13 +22,73 @@ let buttonEnter = () => {
       scoreAvg : 30,
     },  
   }
+  let std2 = {
+    name : 'Pepita Ramirez',
+    percent : 100,
+    exercise : {
+      total : 25,
+      completed : 10,
+      percent : 30,
+    } ,
+    reads : {
+      total : 45,
+      completed : 15,
+      percent : 60,
+    } ,
+    quizzes : {
+      total : 25,
+      completed : 15,
+      percent : 30,
+      scoreSum : 60,
+      scoreAvg : 30,
+    },  
+  }
+  let std3 = {
+    name : 'Fiorella Sanchez',
+    percent : 100,
+    exercise : {
+      total : 25,
+      completed : 10,
+      percent : 30,
+    } ,
+    reads : {
+      total : 45,
+      completed : 15,
+      percent : 60,
+    } ,
+    quizzes : {
+      total : 25,
+      completed : 15,
+      percent : 30,
+      scoreSum : 60,
+      scoreAvg : 30,
+    },  
+  }
+  let std4 = {
+    name : 'Gonzalo Parra',
+    percent : 100,
+    exercise : {
+      total : 25,
+      completed : 10,
+      percent : 30,
+    } ,
+    reads : {
+      total : 45,
+      completed : 15,
+      percent : 60,
+    } ,
+    quizzes : {
+      total : 25,
+      completed : 15,
+      percent : 30,
+      scoreSum : 60,
+      scoreAvg : 30,
+    },  
+  }
   createCard(std);
-  createCard(std);
-  createCard(std);
-  createCard(std);
-  createCard(std);
-  createCard(std);
-  createCard(std);
+  createCard(std2);
+  createCard(std3);
+  createCard(std4);
   };
 
 let listOptions = (id) => {
@@ -41,9 +101,9 @@ let listOptions = (id) => {
   return cohortOption;
 }
 
-/*let removeOptions = () => {
-  document.getElementsByClassName('sedeCohorts').removeChild('cohorts');
-}*/
+let removeOptions = () => {
+  document.querySelector('.sedeCohorts').removeChild('cohorts');
+}
 
 let createCard = (student) => {
   let divTab = document.createElement('DIV');
@@ -103,7 +163,6 @@ const createCardRow = (key, value) => {
     return row; 
   };
 
-
 const requestURLCohorts = '../data/cohorts.json';
 const cohortsRequest = new XMLHttpRequest();
 const requestURLUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
@@ -111,15 +170,13 @@ const usersRequest = new XMLHttpRequest();
 const requestURLProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const progressRequest = new XMLHttpRequest();
 
-
 getCohorts = () => {
   const cohortsJSON = JSON.parse(cohortsRequest.responseText);
+  console.log(cohortsJSON);
   let cohort;
   let i=0;
-  
   let selectSede = () => {
     let i=0;
-    document.querySelectorAll('.sedeCohorts').removeChild('cohorts');
     for (const cohort of cohortsJSON ){
     if (document.getElementById('sede').value === 'LIM') {
         if(cohortsJSON[i].id.includes('lim-')){
@@ -146,25 +203,29 @@ getCohorts = () => {
       }
     }
     i++;
-  }}
-
+  }};
   for (const cohort of cohortsJSON ){
         if(cohortsJSON[i].id.includes('lim-')){
           listOptions(cohortsJSON[i].id);
         }
     i++;
-    } 
-
-  document.getElementById('sede').addEventListener('change', selectSede);
-    
+    };
   getUsers(cohort); //se pasa el arreglo del cohort en cuestion
   document.getElementById('enter').addEventListener('click', buttonEnter);
+  document.getElementById('sede').addEventListener('change', selectSede);
 };
 
 getUsers = (cohorts) => {
   usersRequest.open('GET', requestURLUsers);
   usersRequest.onload =() =>{
   const usersJSON = JSON.parse(usersRequest.responseText);
+    let reformular = usersJSON.map(function(obj){
+      let robj = {};
+      robj[obj.signupCohort] = obj.name;
+      return robj;
+    });
+    console.log(reformular);
+
   getProgress(cohorts,usersJSON); //pasa el cohort y los usuarios del cohort
   };
   usersRequest.send();
@@ -185,7 +246,8 @@ getProgress = (cohorts,users) =>{
           search: '' //String de búsqueda (ver filterUsers)
        };
       datadashboard.processCohortData(options); //aqui se utiliza el objeto options
-  
+
+      document.getElementById('myInput').addEventListener('keyup',  filterUsers);
   
 
   };
@@ -197,3 +259,4 @@ getProgress = (cohorts,users) =>{
 cohortsRequest.open('GET', requestURLCohorts);
 cohortsRequest.onload = getCohorts;
 cohortsRequest.send();
+
