@@ -1,7 +1,31 @@
-let buttonEnter = () => {
+let buttonEnter = (users) => {
   document.getElementById('main').style.display = 'none'; 
-  document.getElementsByClassName('data')[0].style.display = 'initial'
-  let std = {
+  document.getElementsByClassName('data')[0].style.display = 'initial';
+  for (const user of users){
+    let std = {
+      name : user.name,
+      percent : 100,
+      exercise : {
+        total : 25,
+        completed : 10,
+        percent : 30,
+      } ,
+      reads : {
+        total : 45,
+        completed : 15,
+        percent : 60,
+      } ,
+      quizzes : {
+        total : 25,
+        completed : 15,
+        percent : 30,
+        scoreSum : 60,
+        scoreAvg : 30,
+      },  
+    }
+    createCard(std);
+  }
+  /*let std = {
     name : 'Ninoshka Solange Lavarello Neyra',
     percent : 100,
     exercise : {
@@ -89,6 +113,9 @@ let buttonEnter = () => {
   createCard(std2);
   createCard(std3);
   createCard(std4);
+*/
+  
+
   };
 
 let listOptions = (id) => {
@@ -180,8 +207,6 @@ const progressRequest = new XMLHttpRequest();
 
 getCohorts = () => {
   const cohortsJSON = JSON.parse(cohortsRequest.responseText);
-  console.log(cohortsJSON);
-  let cohort;
   let i=0;
   let selectSede = () => {
     let i=0;
@@ -218,17 +243,43 @@ getCohorts = () => {
         }
     i++;
     };
-  getUsers(cohort); //se pasa el arreglo del cohort en cuestion
-  document.getElementById('enter').addEventListener('click', buttonEnter);
+
+ let idCohort=0;
+ let idValue = () =>{
+   if(idCohort==0){
+    idCohort++;
+    getUsers(cohortsJSON);
+   }else{
+    getUsers(cohortsJSON); //se pasa el arreglo del cohort en cuestion
+   }
+   
+ } 
+  document.getElementById('cohorts').addEventListener('change', idValue);
   document.getElementById('sede').addEventListener('change', selectSede);
+  
+  
 };
 
 getUsers = (cohorts) => {
+
   usersRequest.open('GET', requestURLUsers);
+
+  let selectCohort = () =>{
+    let co;
+    for (const cohort of cohorts){
+      if (cohort.id ==document.querySelector('#cohorts').value){
+        co = cohort;
+      }
+    }
+    return co;
+  };
+  let cohort = selectCohort (); 
+
+
   usersRequest.onload =() =>{
   const usersJSON = JSON.parse(usersRequest.responseText);
-  const usersCohort = usersJSON.filter(userFilter => userFilter.signupCohort === cohorts.id); //filtrado usuarios por cohort
-  getProgress(cohorts,usersCohort); //pasa el cohort y los usuarios del cohort
+  const usersCohort = usersJSON.filter(userFilter => userFilter.signupCohort === cohort.id); //filtrado usuarios por cohort
+  getProgress(cohort,usersCohort); //pasa el cohort y los usuarios del cohort
   };
   usersRequest.onerror = handleError;
   usersRequest.send();
@@ -251,14 +302,14 @@ getProgress = (cohorts,users) =>{
       datadashboard.processCohortData(options); //aqui se utiliza el objeto options
 
       document.getElementById('myInput').addEventListener('keyup',  filterUsers);
+      document.getElementById('enter').addEventListener('click', buttonEnter(users));
+      
   
 
   };
   progressRequest.onerror = handleError;
   progressRequest.send(); 
 };
-
-
 
 cohortsRequest.open('GET', requestURLCohorts);
 cohortsRequest.onload = getCohorts;
