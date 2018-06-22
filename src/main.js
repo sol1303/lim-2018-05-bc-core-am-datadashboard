@@ -1,9 +1,11 @@
 let buttonEnter = (users) => {
+
+  console.log(users);
   document.getElementById('main').style.display = 'none'; 
   document.getElementsByClassName('data')[0].style.display = 'initial';
-  for (const user of users){
+ for (const user of users){
     let std = {
-      name : user.name,
+      name : users.name,
       percent : 100,
       exercise : {
         total : 25,
@@ -25,112 +27,15 @@ let buttonEnter = (users) => {
     }
     createCard(std);
   }
-  /*let std = {
-    name : 'Ninoshka Solange Lavarello Neyra',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std2 = {
-    name : 'Pepita Ramirez',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std3 = {
-    name : 'Fiorella Sanchez',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std4 = {
-    name : 'Gonzalo Parra',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  createCard(std);
-  createCard(std2);
-  createCard(std3);
-  createCard(std4);
-*/
+};
   
 
-  };
-
-let listOptions = (id) => {
-  let cohortOption = document.createElement('OPTION');
-  cohortOption.setAttribute('class', 'sedeCohorts')
-  let txtCohort = document.createTextNode(id);
-  cohortOption.appendChild(txtCohort);
-  document.getElementById('cohorts').appendChild(cohortOption);
-
-  return cohortOption;
-}
-
-let removeOptions = () => {
+/*let removeOptions = () => {
   document.querySelector('.sedeCohorts').removeChild('cohorts');
-}
+} */
+
+
+
 
 let createCard = (student) => {
   let divTab = document.createElement('DIV');
@@ -188,131 +93,151 @@ const createCardRow = (key, value) => {
     row.appendChild(cell);
   
     return row; 
-  }
+  };
+
+
 
   
 
-
-handleError = () => {
-    console.log( 'Ha ocurrido un error.' );
-}
-   
+const init = (callback) => {
   
-const requestURLCohorts = '../data/cohorts.json';
-const cohortsRequest = new XMLHttpRequest();
-const requestURLUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const usersRequest = new XMLHttpRequest();
-const requestURLProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-const progressRequest = new XMLHttpRequest();
-
-getCohorts = () => {
-  const cohortsJSON = JSON.parse(cohortsRequest.responseText);
-  let i=0;
-  let selectSede = () => {
-    let i=0;
-    for (const cohort of cohortsJSON ){
-    if (document.getElementById('sede').value === 'LIM') {
-        if(cohortsJSON[i].id.includes('lim-')){
-          listOptions(cohortsJSON[i].id);
-        }
-    } 
-    if (document.getElementById('sede').value === 'AQP'){
-      if(cohortsJSON[i].id.includes('aqp-')){
-        listOptions(cohortsJSON[i].id);
-      }
-    } else if (document.getElementById('sede').value === 'CDMX'){
-      if(cohortsJSON[i].id.includes('cdmx-')){
-        listOptions(cohortsJSON[i].id);
-      }
-    }
-    else if (document.getElementById('sede').value === 'GUADALAJARA') {
-      if(cohortsJSON[i].id.includes('gdl-')){
-        listOptions(cohortsJSON[i].id);
-      }
-    }
-    else if (document.getElementById('sede').value === 'SANTIAGO'){
-      if(cohortsJSON[i].id.includes('scl-')){
-        listOptions(cohortsJSON[i].id);
-      }
-    }
-    i++;
-  }};
-  for (const cohort of cohortsJSON ){
-        if(cohortsJSON[i].id.includes('lim-')){
-          listOptions(cohortsJSON[i].id);
-        }
-    i++;
+  handleError = () => {
+      console.log( 'Ha ocurrido un error.' );
+  };
+     
+    
+  const requestURLCohorts = '../data/cohorts.json';
+  const cohortsRequest = new XMLHttpRequest();
+  const requestURLUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+  const usersRequest = new XMLHttpRequest();
+  const requestURLProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+  const progressRequest = new XMLHttpRequest();
+  
+  getCohorts = () => {
+    const cohortsJSON = JSON.parse(cohortsRequest.responseText);
+    let listOptions = (id) => {
+      let cohortOption = document.createElement('OPTION');
+      cohortOption.setAttribute('class', 'sedeCohorts')
+      let txtCohort = document.createTextNode(id);
+      cohortOption.appendChild(txtCohort);
+      document.getElementById('cohorts').appendChild(cohortOption);
+    
+      return cohortOption;
     };
-
- let idCohort=0;
- let idValue = () =>{
-   if(idCohort==0){
-    idCohort++;
-    getUsers(cohortsJSON);
-   }else{
-    getUsers(cohortsJSON); //se pasa el arreglo del cohort en cuestion
-   }
-   
- } 
-  document.getElementById('cohorts').addEventListener('change', idValue);
-  document.getElementById('sede').addEventListener('change', selectSede);
-  
-  
-};
-
-getUsers = (cohorts) => {
-
-  usersRequest.open('GET', requestURLUsers);
-
-  let selectCohort = () =>{
-    let co;
-    for (const cohort of cohorts){
-      if (cohort.id ==document.querySelector('#cohorts').value){
-        co = cohort;
+    let i=0;
+    let selectSede = () => {
+      let i=0;
+      for (const cohort of cohortsJSON ){
+      if (document.getElementById('sede').value === 'LIM') {
+          if(cohortsJSON[i].id.includes('lim-')){
+            listOptions(cohortsJSON[i].id);
+          }
+      } 
+      if (document.getElementById('sede').value === 'AQP'){
+        if(cohortsJSON[i].id.includes('aqp-')){
+          listOptions(cohortsJSON[i].id);
+        }
+      } else if (document.getElementById('sede').value === 'CDMX'){
+        if(cohortsJSON[i].id.includes('cdmx-')){
+          listOptions(cohortsJSON[i].id);
+        }
       }
-    }
-    return co;
-  };
-  let cohort = selectCohort (); 
-
-
-  usersRequest.onload =() =>{
-  const usersJSON = JSON.parse(usersRequest.responseText);
-  const usersCohort = usersJSON.filter(userFilter => userFilter.signupCohort === cohort.id); //filtrado usuarios por cohort
-  getProgress(cohort,usersCohort); //pasa el cohort y los usuarios del cohort
-  };
-  usersRequest.onerror = handleError;
-  usersRequest.send();
-};
-
-getProgress = (cohorts,users) =>{
-  progressRequest.open('GET', requestURLProgress);
-  progressRequest.onload = () =>{
-   const progressJSON = JSON.parse(progressRequest.responseText);
-      const options = { //este objeto es el que piden para la funcion que engloba las 3 funciones en el data.js
-          cohort: cohorts,
-          cohortData: {
-          users: users, 
-          progress: progressJSON
-          },
-          orderBy: '', //String con criterio de ordenado (ver sortUsers).
-          orderDirection: '', //String con dirección de ordenado (ver sortUsers).
-          search: '' //String de búsqueda (ver filterUsers)
-       };
-      datadashboard.processCohortData(options); //aqui se utiliza el objeto options
-
-      document.getElementById('myInput').addEventListener('keyup',  filterUsers);
-      document.getElementById('enter').addEventListener('click', buttonEnter(users));
-      
+      else if (document.getElementById('sede').value === 'GUADALAJARA') {
+        if(cohortsJSON[i].id.includes('gdl-')){
+          listOptions(cohortsJSON[i].id);
+        }
+      }
+      else if (document.getElementById('sede').value === 'SANTIAGO'){
+        if(cohortsJSON[i].id.includes('scl-')){
+          listOptions(cohortsJSON[i].id);
+        }
+      }
+      i++;
+    }};
+    for (const cohort of cohortsJSON ){
+          if(cohortsJSON[i].id.includes('lim-')){
+            listOptions(cohortsJSON[i].id);
+          }
+      i++;
+      };
   
-
+   /* let idCohort=0;
+   let idValue = () =>{
+     if(idCohort==0){
+      idCohort++;
+      getUsers(cohortsJSON);
+     }else{
+      getUsers(cohortsJSON); //se pasa el arreglo del cohort en cuestion
+     }
+     
+   } 
+    document.getElementById('cohorts').addEventListener('change', idValue);*/
+    getUsers(cohortsJSON);
+    document.getElementById('sede').addEventListener('change', selectSede);
+    
+    
   };
-  progressRequest.onerror = handleError;
-  progressRequest.send(); 
-};
+  
+  getUsers = (cohorts) => {
+  
+    usersRequest.open('GET', requestURLUsers);
+    usersRequest.onload =() =>{
+    const usersJSON = JSON.parse(usersRequest.responseText);
+    getProgress(cohorts,usersJSON); //pasa el cohort y los usuarios del cohort
+    };
+    usersRequest.onerror = handleError;
+    usersRequest.send();
+    
+  };
+  
+  getProgress = (cohorts,users) =>{
+    progressRequest.open('GET', requestURLProgress);
+    progressRequest.onload = () =>{
+     const progressJSON = JSON.parse(progressRequest.responseText);
+     
+     let selectCohort = () =>{
+      let co;
+      for (const cohort of cohorts){
+        if (cohort.id ==document.querySelector('#cohorts').value){
+          co = cohort;
+        }
+      }
+      return co;
+    };
+    let cohort = selectCohort (); 
+    const usersCohort = users.filter(userFilter => userFilter.signupCohort === cohort.id); //filtrado usuarios por cohort
+    const options = { //este objeto es el que piden para la funcion que engloba las 3 funciones en el data.js
+      cohort: cohorts,
+      cohortData: {
+      users: usersCohort, 
+      progress: progressJSON
+      },
+      orderBy: '', //String con criterio de ordenado (ver sortUsers).
+      orderDirection: '', //String con dirección de ordenado (ver sortUsers).
+      search: '' //String de búsqueda (ver filterUsers)
+   };
+  datadashboard.processCohortData(options); //aqui se utiliza el objeto options
+  callback(usersCohort);
+  
+  
+  
+  };
+  
+    progressRequest.onerror = handleError;
+    progressRequest.send(); 
+     
+    document.getElementById('myInput').addEventListener('keyup',  filterUsers);
+  };
+  
+  
+  cohortsRequest.open('GET', requestURLCohorts);
+  cohortsRequest.onload = getCohorts;
+  cohortsRequest.onerror = handleError;
+  cohortsRequest.send();
+  
+    
+}
 
-cohortsRequest.open('GET', requestURLCohorts);
-cohortsRequest.onload = getCohorts;
-cohortsRequest.onerror = handleError;
-cohortsRequest.send();
-
+init((usersCohort) => {
+  document.getElementById('enter').addEventListener('click', buttonEnter); 
+});
