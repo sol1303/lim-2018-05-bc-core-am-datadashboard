@@ -199,21 +199,25 @@ img.deco {
 .student {
   float: left;
   border: 1px solid #646464;
-  width: 20%;
+  width: 80%;
   margin-left: 4%;
   margin-bottom: 3%;
   padding: 2%;
 }
 
 .student table {
-  text-align: left;
   font-size: 0.93em;
 }
 
-.student caption {
-  font-size: 1.2em;
+.student th {
+  text-align: center;
+  font-size: 115%;
   font-weight: bold;
   margin-bottom: 10%;
+}
+
+.student tr{
+  text-align: left;
 }
 
 .student button {

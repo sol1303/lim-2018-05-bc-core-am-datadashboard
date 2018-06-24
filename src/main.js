@@ -23,98 +23,8 @@ let buttonEnter = (users) => {
         scoreAvg : 30,
       },  
     }
-    createCard(std);
-  }
-  /*let std = {
-    name : 'Ninoshka Solange Lavarello Neyra',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std2 = {
-    name : 'Pepita Ramirez',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std3 = {
-    name : 'Fiorella Sanchez',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  let std4 = {
-    name : 'Gonzalo Parra',
-    percent : 100,
-    exercise : {
-      total : 25,
-      completed : 10,
-      percent : 30,
-    } ,
-    reads : {
-      total : 45,
-      completed : 15,
-      percent : 60,
-    } ,
-    quizzes : {
-      total : 25,
-      completed : 15,
-      percent : 30,
-      scoreSum : 60,
-      scoreAvg : 30,
-    },  
-  }
-  createCard(std);
-  createCard(std2);
-  createCard(std3);
-  createCard(std4);
-*/
-  
+    //createCard(std);
+  }  
 
   };
 
@@ -190,13 +100,9 @@ const createCardRow = (key, value) => {
     return row; 
   }
 
-  
-
-
 handleError = () => {
     console.log( 'Ha ocurrido un error.' );
-}
-   
+};   
   
 const requestURLCohorts = '../data/cohorts.json';
 const cohortsRequest = new XMLHttpRequest();
@@ -209,8 +115,10 @@ getCohorts = () => {
   const cohortsJSON = JSON.parse(cohortsRequest.responseText);
   let i=0;
   let selectSede = () => {
+    
     let i=0;
-    for (const cohort of cohortsJSON ){
+  for (const cohort of cohortsJSON ){
+      
     if (document.getElementById('sede').value === 'LIM') {
         if(cohortsJSON[i].id.includes('lim-')){
           listOptions(cohortsJSON[i].id);
@@ -237,6 +145,7 @@ getCohorts = () => {
     }
     i++;
   }};
+
   for (const cohort of cohortsJSON ){
         if(cohortsJSON[i].id.includes('lim-')){
           listOptions(cohortsJSON[i].id);
