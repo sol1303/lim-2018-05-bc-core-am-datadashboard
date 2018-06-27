@@ -190,7 +190,7 @@ window.filterUsers = (users, search) => {
 
 window.processCohortData = (options)  => {
    let users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-   users = sortUsers (users, options.orderBy, options.orderDirection);
+  // users = sortUsers (users, options.orderBy, options.orderDirection);
    if (options.search !== '') {
     filterUsers (users, options.search);
     };
