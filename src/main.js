@@ -1,60 +1,50 @@
-let createCard = (student) => {
-  let divTab = document.createElement('DIV');
-  divTab.setAttribute('class', 'student');
-  document.getElementById('data').appendChild(divTab);
-  
-  let table = document.createElement('TABLE');
-  divTab.appendChild(table);
-      
-  let caption = document.createElement('CAPTION');
-  let txtCaption = document.createTextNode(student.name);
-  caption.appendChild(txtCaption);
-  table.appendChild(caption);
-  
-  /*first row*/
-  row = createCardRow('Completitud Total', student.percent);
-  table.appendChild(row);
-  
-  /*second row*/
-  row = createCardRow('Ejercicios Completados', student.exercise.completed);
-  table.appendChild(row);
-  
-  /*third row*/
-  row = createCardRow('Quizzes Completados', student.quizzes.completed);
-  table.appendChild(row);
-  
-  /*fourth row*/
-  row = createCardRow('Puntuación de Quizzes', student.quizzes.scoreSum);
-  table.appendChild(row);
-     
-  /*fith row*/
-  row = createCardRow('Lecturas Completadas', student.reads.completed);
-  table.appendChild(row);
-  
-  /*button*/
-  
+function createCard(users) {    
+  let row = document.createElement('TR');
+  row.setAttribute('class', 'search');
+  document.getElementById('studentTable').appendChild(row);
+
+  let cellName = document.createElement('TD');
+  cellName.setAttribute('class', 'nameStudent')
+  let txtName = document.createTextNode(users.name);
+  cellName.appendChild(txtName);
+  row.appendChild(cellName);
+
+/*first row*/
+cell = createCardCell(users.stats.percent);
+row.appendChild(cell);
+
+/*second row*/
+cell = createCardCell(users.stats.exercise.completed);
+row.appendChild(cell);
+
+/*third row*/
+cell = createCardCell(users.stats.quizzes.completed);
+row.appendChild(cell);
+
+/*fourth row*/
+cell = createCardCell(users.stats.quizzes.scoreSum);
+row.appendChild(cell);
+ 
+/*fith row*/
+cell = createCardCell(users.stats.reads.completed);
+row.appendChild(cell);
+
+/*button*/
+
   let button = document.createElement('BUTTON');
   let txtButton = document.createTextNode('Ver +');
   button.appendChild(txtButton);
-  divTab.appendChild(button);
-  
-  };
-  
-const createCardRow = (key, value) => {
-    let row = document.createElement('TR');
-  
-    let cell = document.createElement('TD');
-    let txt = document.createTextNode(key);
-    cell.appendChild(txt);
-    row.appendChild(cell);
-  
-    cell = document.createElement('TD');
-    txt = document.createTextNode(value);
-    cell.appendChild(txt);
-    row.appendChild(cell);
-  
-    return row; 
-  };
+  row.appendChild(button);
+
+}
+
+const createCardCell = (value) => {
+let cell = document.createElement('TD');
+let txt = document.createTextNode(value);
+cell.appendChild(txt);
+
+return cell; 
+}
   
 handleError = (xhr,status,error) => {
     console.log( 'Ha ocurrido un error.' );
@@ -162,19 +152,29 @@ function getProcess (cohort, usersCohort) {
           users: usersCohort, 
           progress: usersProgress
           },
-          orderBy: '', //String con criterio de ordenado (ver sortUsers).
-          orderDirection: '', //String con dirección de ordenado (ver sortUsers).
+          orderBy: document.getElementById('nameOption').value, //String con criterio de ordenado (ver sortUsers).
+          orderDirection: document.getElementById('asc').value, //String con dirección de ordenado (ver sortUsers).
           search: '' //String de búsqueda (ver filterUsers)
        };
+        console.log(options.orderBy);
+        console.log(options.orderDirection);
 
         document.getElementById('enter').addEventListener('click', buttonEnter = () => {
         cohortName.innerHTML = document.querySelector('#cohorts').value;
         totalA.innerHTML = totalUsers;
         document.getElementById('main').style.display = 'none'; 
         document.getElementsByClassName('data')[0].style.display = 'initial';
-        processCohortData(options);
+        const users = processCohortData(options);
+        for (const user of users){
+          createCard(user);
+        }
+        document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
+          options.search = document.getElementById('myInput').value.toUpperCase();
+          //filterUsers(users, options.search);
+          processCohortData(options);
+        });
         }); 
-        document.getElementById('myInput').addEventListener('keyup',  filterUsers);
+
       },
       error: handleError
     });

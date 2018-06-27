@@ -83,7 +83,7 @@ usuarios = users.map((user)=> {
   let percentERQ  = (id, type) =>{
     let total = totalERQ(id, type);
     let completed = completedERQ(id, type);
-    let percent= (completed/total)*100;
+    let percent= Math.round((completed/total)*100);
     if(total===0){
       return 0;
     }else{
@@ -123,7 +123,7 @@ usuarios = users.map((user)=> {
   let scoreProm  = (id, type) => {
     let scoretype = score(id, type);
     let total = completedERQ (id, type);
-    let prom = scoretype/total ;
+    let prom = Math.round(scoretype/total) ;
     if(total === 0){
       return 0;
 
@@ -160,35 +160,41 @@ usuarios = users.map((user)=> {
   return usersWithStats;
   });
 
-  console.log(usuarios); 
   return usuarios;
-
- 
-
 };
 
 
-window.sortUsers = (users, orderBy, orderDirection) => {};
+window.sortUsers = (users, orderBy, orderDirection) => {
+  if (orderBy == 'Nombre' && orderDirection == 'Asc') {
+    users.sort();
+  }
+
+  
+};
 window.filterUsers = (users, search) => {
-        var input, filter, div, caption, i;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        div = document.querySelectorAll('.student')
-        caption = document.getElementsByTagName('caption');
-        for (i = 0; i < caption.length; i++) {
-          c = caption[i].textContent.toUpperCase();
-            if (c.indexOf(filter) > -1) {
-                div[i].style.display = "";
-            } else {
-                div[i].style.display = "none";
-            }
-        }
+  debugger
+  let  row, i=0, userFilter = [];
+    row = document.querySelectorAll('.search');
+    student = document.querySelectorAll('.nameStudent');
+    for (const user of users ){
+      if(user.name.toUpperCase().includes(search)){
+        row[i].style.display = "";
+        i++;
+        userFilter.push(user);
+      } else {
+        row[i].style.display = "none";
+        i++;
+        }}
+  return userFilter;
 };
 
 window.processCohortData = (options)  => {
    let users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-   sortUsers (users, options.orderBy, options.orderDirection);
-   filterUsers (users, options.search);
+   users = sortUsers (users, options.orderBy, options.orderDirection);
+   if (options.search !== '') {
+    filterUsers (users, options.search);
+    };
+   return users;
   }
 
 
