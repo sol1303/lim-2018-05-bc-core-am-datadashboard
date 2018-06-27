@@ -55,13 +55,13 @@
     </div>
     <div id="data" class="col-9 data">
     <div id="info">
-      <p>LIM-2018-03-PRE-CORE-PW</p>
-      <P id="infoA">Alumnas: 85</P>
+      <p id="cohortName" ></p>
+      <p id="infoA">Alumnas: <span id="totalA"></span> </p>
     </div>
     <div class="order">
       <label for="ordeBy">Ordenar por:</label>
       <select id="ordeBy">
-        <option>Nombre</option>
+        <option id="nameOption">Nombre</option>
         <option>Completitud Total</option>
         <option>Ejercicios Completados</option>
         <option>Quizzes Completados</option>
@@ -69,39 +69,24 @@
         <option>Lecturas Completadas</option>
       </select>
       <select id="arregement">
-        <option>Asc</option>
+        <option id="asc">Asc</option>
         <option>Desc</option>
       </select>
       <input type="text" id="myInput" placeholder="Busca por nombre aquí">
     </div>
     <div class="student">
-    <table>
-      <tr>
-        <th>Nombre</th>
-        <th>Completitud Total</th> 
-        <th>Ejercicios Completados</th>
-        <th>Quizzes Completados</th>
-        <th>Puntuación de Quizzes</th>
-        <th>Lecturas Completadas</th>
-      </tr>
-      <tr>
-        <caption>Jill Lopez</caption>
-        <td>100</td> 
-        <td>50</td>
-        <td>10</td>
-        <td>15</td>
-        <td>60</td>
-      </tr>
-      <tr>
-        <caption>Ninoshka Solange Lavarello Neyra</caption>
-        <td>100</td> 
-        <td>50</td>
-        <td>10</td>
-        <td>15</td>
-        <td>60</td>
-      </tr>
-    </table>
-  </div>
+      <table id="studentTable">
+       <tr>
+          <th>Nombre</th>
+          <th>Completitud Total</th> 
+          <th>Ejercicios Completados</th>
+          <th>Quizzes Completados</th>
+          <th>Puntuación de Quizzes</th>
+          <th>Lecturas Completadas</th>
+          <th>Más info</th>
+        </tr>
+      </table>
+    </div>
   </div>
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
