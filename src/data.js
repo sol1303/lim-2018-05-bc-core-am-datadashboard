@@ -2,7 +2,7 @@
 window.computeUsersStats = (users, progress, courses) => {
   let keyProgress = Object.keys(progress);
   let onlyProgress = {};
-  for(const key of keyProgress){  //obtener progreso sin objetos vacios
+  for(const key of keyProgress){  //obtener progreso de alumnas sin objetos vacios
     if(progress[key].hasOwnProperty('intro')){
         onlyProgress[key] = progress[key];
     }
@@ -172,28 +172,24 @@ window.sortUsers = (users, orderBy, orderDirection) => {
   
 };
 window.filterUsers = (users, search) => {
-  debugger
-  let  row, i=0, userFilter = [];
-    row = document.querySelectorAll('.search');
-    student = document.querySelectorAll('.nameStudent');
+  let  userFilter = [];
     for (const user of users ){
       if(user.name.toUpperCase().includes(search)){
-        row[i].style.display = "";
-        i++;
         userFilter.push(user);
-      } else {
-        row[i].style.display = "none";
-        i++;
-        }}
+      }
+    }
   return userFilter;
 };
 
 window.processCohortData = (options)  => {
-   let users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-  // users = sortUsers (users, options.orderBy, options.orderDirection);
+  let users;
+    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
+  
+   //users = sortUsers (users, options.orderBy, options.orderDirection);
    if (options.search !== '') {
-    filterUsers (users, options.search);
-    };
+    users = filterUsers (users, options.search);
+    }
+    
    return users;
   }
 
