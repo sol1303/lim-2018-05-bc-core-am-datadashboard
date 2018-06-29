@@ -14,7 +14,7 @@ cell = createCardCell(users.stats.percent);
 row.appendChild(cell);
 
 /*second row*/
-cell = createCardCell(users.stats.exercise.completed);
+cell = createCardCell(users.stats.exercises.completed);
 row.appendChild(cell);
 
 /*third row*/
@@ -178,11 +178,27 @@ getProgress = (cohort, usersCohort) =>{
 
     
     document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{
-      let row, i=0; 
+      let row, eliminate=[], counter=0, rowcounter;  
       options.search = document.getElementById('myInput').value.toUpperCase();
       newFilter = processCohortData(options);
       row = document.querySelectorAll('.search');
-      const usersKey = Object.keys(users);
+
+      for(const user of users){ //obteniendo array de usuarios a eliminar de la lista
+        for ( const newfil of newFilter){
+          if(user.name!== newfil.name){
+            counter++;
+          }
+        }
+        if(newFilter.length === counter){
+          eliminate.push(user);
+        }
+        counter =0;
+      }
+
+      console.log(eliminate);
+      console.log(newFilter);
+
+
      /*
       for (const key of usersKey){ 
         let a=0;    

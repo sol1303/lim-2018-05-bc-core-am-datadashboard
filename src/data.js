@@ -11,6 +11,7 @@ window.computeUsersStats = (users, progress, courses) => {
 let keyOnly = Object.keys(onlyProgress);
 
 
+
 let usuarios = [];
 usuarios = users.map((user)=> {
 
@@ -137,7 +138,7 @@ usuarios = users.map((user)=> {
       name: user.name,
       stats:{
         percent: totalPercent(user.id),
-        exercise: {
+        exercises: {
           total : totalERQ(user.id, 'practice'),
           completed : completedERQ(user.id, 'practice'),
           percent : percentERQ(user.id, 'practice')
@@ -160,15 +161,17 @@ usuarios = users.map((user)=> {
   return usersWithStats;
   });
 
+  console.log(usuarios);
+  
   return usuarios;
 };
 
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-  if (orderBy == 'Nombre' && orderDirection == 'Asc') {
+ /* if (orderBy == 'Nombre' && orderDirection == 'Asc') {
     users.sort();
   }
-
+*/
   
 };
 window.filterUsers = (users, search) => {
@@ -185,7 +188,7 @@ window.processCohortData = (options)  => {
   let users;
     users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
   
-   //users = sortUsers (users, options.orderBy, options.orderDirection);
+   users = sortUsers (users, options.orderBy, options.orderDirection);
    if (options.search !== '') {
     users = filterUsers (users, options.search);
     }
