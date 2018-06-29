@@ -78,10 +78,6 @@ getCohorts = () => {
     for (const cohort of cohorts ){
     if (document.getElementById('sede').value === 'LIM') {
         if(cohort.id.includes('lim-')){
-<<<<<<< HEAD
-=======
-
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74
           listOptions(cohort.id);
         }
     }
@@ -136,11 +132,8 @@ getUsers = (cohort) => {
 
 };
 
-<<<<<<< HEAD
-=======
 
         
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74
 
 getProgress = (cohort, usersCohort) =>{
   progressRequest.open('GET', requestURLProgress);
@@ -164,23 +157,6 @@ getProgress = (cohort, usersCohort) =>{
       users: usersCohort, 
       progress: usersProgress
       },
-<<<<<<< HEAD
-      orderBy: document.getElementById('nameOption').value, //String con criterio de ordenado (ver sortUsers).
-      orderDirection: document.getElementById('asc').value, //String con dirección de ordenado (ver sortUsers).
-      search: '' //String de búsqueda (ver filterUsers)
-   };
-    let users, newFilter;
-    document.getElementById('enter').addEventListener('click', buttonEnter = () => {
-      cohortName.innerHTML = document.querySelector('#cohorts').value;
-      totalA.innerHTML = totalUsers;
-      document.getElementById('main').style.display = 'none'; 
-      document.getElementsByClassName('data')[0].style.display = 'initial';
-      users = processCohortData(options);
-      for (const user of users){
-        createCard(user);
-      }
-    });
-=======
       orderBy: '', //String con criterio de ordenado (ver sortUsers).
       orderDirection: '', //String con dirección de ordenado (ver sortUsers).
       search: '' //String de búsqueda (ver filterUsers)
@@ -218,7 +194,6 @@ getProgress = (cohort, usersCohort) =>{
          console.log(sort);
         });
    
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74
 
     document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{
       let row, eliminate=[], counter=0, rowcounter;  
@@ -289,7 +264,3 @@ cohortsRequest.onerror = handleError;
 cohortsRequest.send();
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74

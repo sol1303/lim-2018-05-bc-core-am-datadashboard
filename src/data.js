@@ -263,10 +263,6 @@ window.sortUsers = (users, orderBy, orderDirection) => {
      }
      
    };
-<<<<<<< HEAD
-=======
-
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74
 };
 window.filterUsers = (users, search) => {
   let  userFilter = [];
@@ -279,16 +275,6 @@ window.filterUsers = (users, search) => {
 };
 
 window.processCohortData = (options)  => {
-<<<<<<< HEAD
-  let users;
-    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-  
-   users = sortUsers (users, options.orderBy, options.orderDirection);
-   if (options.search !== '') {
-    users = filterUsers (users, options.search);
-    }
-    
-=======
 
    let users;
    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
@@ -297,6 +283,5 @@ window.processCohortData = (options)  => {
    users = filterUsers (users, options.search);
     };
 
->>>>>>> 366444e74a666a9e7ea37911bf6e65ec123b6e74
    return users;
   } 
