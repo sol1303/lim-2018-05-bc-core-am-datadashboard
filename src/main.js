@@ -14,7 +14,7 @@ cell = createCardCell(users.stats.percent);
 row.appendChild(cell);
 
 /*second row*/
-cell = createCardCell(users.stats.exercise.completed);
+cell = createCardCell(users.stats.exercises.completed);
 row.appendChild(cell);
 
 /*third row*/
@@ -56,6 +56,7 @@ $.ajax({
   success: function passingCohort (data){
     let cohorts = data;
     let cohort;
+
     let listOptions = (id) => {
       let cohortOption = document.createElement('OPTION');
       cohortOption.setAttribute('class', 'sedeCohorts')
@@ -132,7 +133,7 @@ function getProcess (cohort, usersCohort) {
     $.ajax({
       type: "GET",
       url:'../data/cohorts/lim-2018-03-pre-core-pw/progress.json',
-      success: function(data){
+      success: function(data){debugger
         let progress = data; // check
         let keyProgress = Object.keys(progress);  //ckeck
         let usersProgress = {};
@@ -152,29 +153,44 @@ function getProcess (cohort, usersCohort) {
           users: usersCohort, 
           progress: usersProgress
           },
-          orderBy: document.getElementById('nameOption').value, //String con criterio de ordenado (ver sortUsers).
-          orderDirection: document.getElementById('asc').value, //String con dirección de ordenado (ver sortUsers).
+          orderBy: '', //String con criterio de ordenado (ver sortUsers).
+          orderDirection: '', //String con dirección de ordenado (ver sortUsers).
           search: '' //String de búsqueda (ver filterUsers)
        };
-        console.log(options.orderBy);
-        console.log(options.orderDirection);
-
+        console.log(options.cohortData.users);
+        let users, sort;
         document.getElementById('enter').addEventListener('click', buttonEnter = () => {
         cohortName.innerHTML = document.querySelector('#cohorts').value;
         totalA.innerHTML = totalUsers;
         document.getElementById('main').style.display = 'none'; 
         document.getElementsByClassName('data')[0].style.display = 'initial';
-        const users = processCohortData(options);
+        users = processCohortData(options);
+        options.cohortData.users = users;
         for (const user of users){
           createCard(user);
         }
+      });
         document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
           options.search = document.getElementById('myInput').value.toUpperCase();
-          //filterUsers(users, options.search);
           processCohortData(options);
         });
-        }); 
-
+        document.getElementById('orderBy').addEventListener('change', orderByCohort = () => {
+          debugger
+          options.orderBy = document.getElementById('orderBy').value;
+          options.orderDirection = document.getElementById('arregement').value;
+          sort = processCohortData(options);
+          sort = sortUsers(users, options.orderBy, options.orderDirection);
+          console.log(sort);
+        })
+        
+        document.getElementById('arregement').addEventListener('change', orderCohort = () => {
+          debugger
+          options.orderBy = document.getElementById('orderBy').value;
+          options.orderDirection = document.getElementById('arregement').value;
+          sort = processCohortData(options);
+          sort = sortUsers(users, options.orderBy, options.orderDirection);
+         console.log(sort);
+        });
       },
       error: handleError
     });
