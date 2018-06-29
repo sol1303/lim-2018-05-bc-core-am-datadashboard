@@ -45,11 +45,11 @@ describe('data', () => {
         () => assert.equal(processed[0].stats.percent, 53)
       );
 
-      it('debería tener propiedad exercises con valor {total: 2, completed: 0, percent: 0}', () => {
+      it('debería tener propiedad exercises con valor {total: 2, completed: 1, percent: 50}', () => {
         assert.deepEqual(processed[0].stats.exercises, {
           total: 2,
-          completed: 0,
-          percent: 0,
+          completed: 1,
+          percent: 50,
         });
       });
 
@@ -58,6 +58,7 @@ describe('data', () => {
           total: 3,
           completed: 2,
           percent: 67,
+          scoreSum: 57,
           scoreAvg: 29,
         });
       });
@@ -93,14 +94,34 @@ describe('data', () => {
 
   describe('filterUsers(users, filterBy)', () => {
 
-    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)');
+    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)' , () =>{
+
+    });
 
   });
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
+     
+    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter',  () =>{
+      /*
+      const processed = processCohortData({ cohortData, orderBy, orderDirection, filterBy });
 
-    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
+     // assert.equal(users.length, processed.length);
+      processed.forEach(user => {
+        assert.ok(user.hasOwnProperty('stats'));
+        assert.isNumber(user.stats.percent);
+        assert.isObject(user.stats.exercises);
+        assert.isObject(user.stats.quizzes);
+        assert.isObject(user.stats.reads);
+      });
+
+      expect(filterUsers).to.have.been.called.once;
+      expect(sortUsers).to.have.been.called.once; */
+
+    });
 
   });
 
 });
+
+
