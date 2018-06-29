@@ -161,6 +161,8 @@ getProgress = (cohort, usersCohort) =>{
       orderDirection: '', //String con dirección de ordenado (ver sortUsers).
       search: '' //String de búsqueda (ver filterUsers)
    };
+
+
     
     console.log(options.cohortData.users);
         let users, sort;
