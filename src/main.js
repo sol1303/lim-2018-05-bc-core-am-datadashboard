@@ -164,8 +164,10 @@ getProgress = (cohort, usersCohort) =>{
       orderDirection: document.getElementById('asc').value, //String con dirección de ordenado (ver sortUsers).
       search: '' //String de búsqueda (ver filterUsers)
    };
+
     let users, newFilter;
     document.getElementById('enter').addEventListener('click', buttonEnter = () => {
+      
       cohortName.innerHTML = document.querySelector('#cohorts').value;
       totalA.innerHTML = totalUsers;
       document.getElementById('main').style.display = 'none'; 
