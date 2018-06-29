@@ -168,7 +168,7 @@ usuarios = users.map((user)=> {
 
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-  debugger
+  
   let dataSort;
   if (orderBy == 'Nombre') {
    dataSort = users.sort((objt1, objt2) => {
@@ -180,8 +180,10 @@ window.sortUsers = (users, orderBy, orderDirection) => {
       return 0
   });
     if (orderDirection == 'Asc'){
+      
       return dataSort;
     } else if (orderDirection == 'Desc') {
+      
       return dataSort.reverse();
     }
   };
@@ -275,14 +277,10 @@ window.filterUsers = (users, search) => {
 };
 
 window.processCohortData = (options)  => {
-
-
-   let users;
-   users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-   //users = sortUsers (users, options.orderBy, options.orderDirection);
-   if (options.search !== '') {
-   users = filterUsers (users, options.search);
-    };
-
+  let users, sort; 
+    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
+    users = sortUsers (users, options.orderBy, options.orderDirection);
+     users = filterUsers (users, options.search);
+  
    return users;
   } 

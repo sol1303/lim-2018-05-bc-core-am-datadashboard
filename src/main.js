@@ -46,8 +46,12 @@ cell.appendChild(txt);
 return cell; 
 };
 
-let deleteUsers = (user) => {
-    document.getElementById('studentTable').deleteRow(1);
+let deleteUsers = () => {
+    let listOfStudents = document.getElementsByClassName('search');
+    let numberOfStudents = listOfStudents.length;
+    for (i=0;numberOfStudents>i; i++){
+      document.getElementById('studentTable').deleteRow(1);
+    }
 };
 
 
@@ -163,97 +167,59 @@ getProgress = (cohort, usersCohort) =>{
    };
 
 
-    
-    console.log(options.cohortData.users);
-        let users, sort;
+        let users , sort, newFilter;
         document.getElementById('enter').addEventListener('click', buttonEnter = () => {
-        cohortName.innerHTML = document.querySelector('#cohorts').value;
-        totalA.innerHTML = totalUsers;
-        document.getElementById('main').style.display = 'none'; 
-        document.getElementsByClassName('data')[0].style.display = 'initial';
-        users = processCohortData(options);
-        options.cohortData.users = users;
-        for (const user of users){
-          createCard(user);
-        }
-       });
+          cohortName.innerHTML = document.querySelector('#cohorts').value;
+          totalA.innerHTML = totalUsers;
+          document.getElementById('main').style.display = 'none'; 
+          document.getElementsByClassName('data')[0].style.display = 'initial';
+          options.orderBy = document.getElementById('orderBy').value;
+          options.orderDirection = document.getElementById('arregement').value;
+          users = processCohortData(options);
+
+          for (const user of users){
+            createCard(user);
+          } 
+
+        });
+       
      
         document.getElementById('orderBy').addEventListener('change', orderByCohort = () => {
-          debugger
+        
           options.orderBy = document.getElementById('orderBy').value;
           options.orderDirection = document.getElementById('arregement').value;
-          sort = processCohortData(options);
-          sort = sortUsers(users, options.orderBy, options.orderDirection);
-          console.log(sort);
-        })
+          sort= processCohortData(options);
+            deleteUsers ();
+          
+          for (const sor of sort){
+            createCard(sor);
+          };
+        });
         
         document.getElementById('arregement').addEventListener('change', orderCohort = () => {
-          debugger
+          
           options.orderBy = document.getElementById('orderBy').value;
           options.orderDirection = document.getElementById('arregement').value;
           sort = processCohortData(options);
-          sort = sortUsers(users, options.orderBy, options.orderDirection);
-         console.log(sort);
+            deleteUsers ();
+
+          for (const sor of sort){
+            createCard(sor);
+          };
+        
         });
    
 
-    document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{
-      let row, eliminate=[], counter=0, rowcounter;  
+    document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
       options.search = document.getElementById('myInput').value.toUpperCase();
       newFilter = processCohortData(options);
-      row = document.querySelectorAll('.search');
-
-      for(const user of users){ //obteniendo array de usuarios a eliminar de la lista
-        for ( const newfil of newFilter){
-          if(user.name!== newfil.name){
-            counter++;
-          }
-        }
-        if(newFilter.length === counter){
-          eliminate.push(user);
-        }
-        counter =0;
-      }
-
-      console.log(eliminate);
-      console.log(newFilter);
-
-
-     /*
-      for (const key of usersKey){ 
-        let a=0;    
-         for(const newfil of newFilter){  
-           if(users[key].name === newfil.name){
-             console.log(users[key].name);
-            // document.getElementById('studentTable').deleteRow(users[key]);
-             row[key].style.display = ""; 
-            a=1;
-           } 
-         }
-         
-         if (a==1){
-          document.getElementById('studentTable').deleteRow(users[key]);
-           //row[key].style.display = "none";
-           a=0;
-           }
-         
-      }  */
-
-
-      /*
-      
-
-    for(const user of users){
-        deleteUsers(user);
-       }
-       for(const fil of newFilter){
-         createCard(fil);
-       }
-
-        */
-     
+      deleteUsers();
+       for (const newfil of newFilter){
+            createCard(newfil);
+       };
        
     }); 
+  
   };
   progressRequest.onerror = handleError;
   progressRequest.send(); 
