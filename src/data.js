@@ -161,24 +161,25 @@ usuarios = users.map((user)=> {
   return usersWithStats;
   });
 
-  console.log(usuarios);
+
   
   return usuarios;
 };
 
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-  
+
   let dataSort;
   if (orderBy == 'Nombre') {
    dataSort = users.sort((objt1, objt2) => {
-    if (objt1.name.toUpperCase() > objt2.name.toUpperCase()) {
+    if (objt1.name > objt2.name) {
       return 1
-  } else if (objt1.name.toUpperCase() < objt2.name.toUpperCase()) {
+  } else if (objt1.name < objt2.name) {
       return -1
   }
       return 0
   });
+
     if (orderDirection == 'Asc'){
       
       return dataSort;
@@ -186,7 +187,9 @@ window.sortUsers = (users, orderBy, orderDirection) => {
       
       return dataSort.reverse();
     }
+
   };
+
   if (orderBy == 'Completitud Total') {
     dataSort = users.sort((objt1, objt2) => {
      if (objt1.stats.percent < objt2.stats.percent) {
@@ -269,7 +272,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 window.filterUsers = (users, search) => {
   let  userFilter = [];
     for (const user of users ){
-      if(user.name.toUpperCase().includes(search)){
+      if(user.name.toUpperCase().includes(search.toUpperCase())){
         userFilter.push(user);
       }
     }
