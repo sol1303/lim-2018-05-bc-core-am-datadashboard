@@ -10,8 +10,6 @@ window.computeUsersStats = (users, progress, courses) => {
 
 let keyOnly = Object.keys(onlyProgress);
 
-
-
 let usuarios = [];
 usuarios = users.map((user)=> {
 
@@ -157,12 +155,8 @@ usuarios = users.map((user)=> {
         }, 
       } 
     }
-
   return usersWithStats;
   });
-
-  console.log(usuarios);
-  
   return usuarios;
 };
 
@@ -275,13 +269,13 @@ window.filterUsers = (users, search) => {
 };
 
 window.processCohortData = (options)  => {
-
    let users;
    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-   //users = sortUsers (users, options.orderBy, options.orderDirection);
+   users = sortUsers (users, options.orderBy, options.orderDirection);
    if (options.search !== '') {
    users = filterUsers (users, options.search);
     };
-
+    console.log(users);
    return users;
+   
   } 

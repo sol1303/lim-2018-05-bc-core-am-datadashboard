@@ -48,8 +48,7 @@ return cell;
 
 let deleteUsers = (user) => {
     document.getElementById('studentTable').deleteRow(1);
-};
-
+}
 
 const requestURLCohorts = '../data/cohorts.json';
 const cohortsRequest = new XMLHttpRequest();
@@ -130,10 +129,7 @@ getUsers = (cohort) => {
   usersRequest.onerror = handleError;
   usersRequest.send();
 
-};
-
-
-        
+};  
 
 getProgress = (cohort, usersCohort) =>{
   progressRequest.open('GET', requestURLProgress);
@@ -153,7 +149,7 @@ getProgress = (cohort, usersCohort) =>{
 
     const options = { //este objeto es el que piden para la funcion que engloba las 3 funciones en el data.js
       cohort: cohort,
-      cohortData: {
+      cohortData: {55555555
       users: usersCohort, 
       progress: usersProgress
       },
@@ -161,14 +157,15 @@ getProgress = (cohort, usersCohort) =>{
       orderDirection: '', //String con dirección de ordenado (ver sortUsers).
       search: '' //String de búsqueda (ver filterUsers)
    };
-    
-    console.log(options.cohortData.users);
-        let users, sort;
+      
+   let users=[];
         document.getElementById('enter').addEventListener('click', buttonEnter = () => {
         cohortName.innerHTML = document.querySelector('#cohorts').value;
         totalA.innerHTML = totalUsers;
         document.getElementById('main').style.display = 'none'; 
         document.getElementsByClassName('data')[0].style.display = 'initial';
+        options.orderBy = document.getElementById('orderBy').value;
+        options.orderDirection = document.getElementById('arregement').value;
         users = processCohortData(options);
         options.cohortData.users = users;
         for (const user of users){
@@ -180,18 +177,20 @@ getProgress = (cohort, usersCohort) =>{
           debugger
           options.orderBy = document.getElementById('orderBy').value;
           options.orderDirection = document.getElementById('arregement').value;
-          sort = processCohortData(options);
-          sort = sortUsers(users, options.orderBy, options.orderDirection);
-          console.log(sort);
+          //let sort = processCohortData(options);
+          //sort = sortUsers(users, options.orderBy, options.orderDirection);
+          //console.log(sort);
+          processCohortData(options);
         })
         
         document.getElementById('arregement').addEventListener('change', orderCohort = () => {
           debugger
           options.orderBy = document.getElementById('orderBy').value;
           options.orderDirection = document.getElementById('arregement').value;
-          sort = processCohortData(options);
-          sort = sortUsers(users, options.orderBy, options.orderDirection);
-         console.log(sort);
+          //let sort = processCohortData(options);
+          //sort = sortUsers(users, options.orderBy, options.orderDirection);
+          //console.log(sort);
+          processCohortData(options);
         });
    
 
