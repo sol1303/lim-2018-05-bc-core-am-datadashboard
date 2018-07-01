@@ -157,28 +157,36 @@ usuarios = users.map((user)=> {
     }
   return usersWithStats;
   });
+
+
+  
   return usuarios;
 };
 
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-  debugger
+
   let dataSort;
   if (orderBy == 'Nombre') {
    dataSort = users.sort((objt1, objt2) => {
-    if (objt1.name.toUpperCase() > objt2.name.toUpperCase()) {
+    if (objt1.name > objt2.name) {
       return 1
-  } else if (objt1.name.toUpperCase() < objt2.name.toUpperCase()) {
+  } else if (objt1.name < objt2.name) {
       return -1
   }
       return 0
   });
+
     if (orderDirection == 'Asc'){
+      
       return dataSort;
     } else if (orderDirection == 'Desc') {
+      
       return dataSort.reverse();
     }
+
   };
+
   if (orderBy == 'Completitud Total') {
     dataSort = users.sort((objt1, objt2) => {
      if (objt1.stats.percent < objt2.stats.percent) {
@@ -261,7 +269,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 window.filterUsers = (users, search) => {
   let  userFilter = [];
     for (const user of users ){
-      if(user.name.toUpperCase().includes(search)){
+      if(user.name.toUpperCase().includes(search.toUpperCase())){
         userFilter.push(user);
       }
     }
@@ -269,13 +277,11 @@ window.filterUsers = (users, search) => {
 };
 
 window.processCohortData = (options)  => {
-   let users;
-   users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
-   users = sortUsers (users, options.orderBy, options.orderDirection);
-   if (options.search !== '') {
-   users = filterUsers (users, options.search);
-    };
-    console.log(users);
+  let users, sort; 
+    users = computeUsersStats (options.cohortData.users, options.cohortData.progress, options.cohort.coursesIndex);
+    users = sortUsers (users, options.orderBy, options.orderDirection);
+     users = filterUsers (users, options.search);
+  
    return users;
    
   } 
