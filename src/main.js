@@ -1,4 +1,11 @@
-function createCard(users) {    
+$(document).ready(function(){
+  debugger
+  $(".userInfo").click(function(){
+      $("div ul").toggleClass("show");
+  });
+});
+
+let  createCard = (users) => {    
   let row = document.createElement('TR');
   row.setAttribute('class', 'search');
   document.getElementById('studentTable').appendChild(row);
@@ -78,7 +85,17 @@ getCohorts = () => {
   
     return cohortOption;
   };
+
+  let deleteCohorts = () => {
+    let listOfCohorts = document.getElementById('cohorts');
+    let numberOfCohorts = listOfCohorts.length;
+    for (i=0;numberOfCohorts>i; i++){
+      listOfCohorts.remove(0);
+    }
+
+};
   let selectSede = () => {
+    deleteCohorts();
     for (const cohort of cohorts ){
     if (document.getElementById('sede').value === 'LIM') {
         if(cohort.id.includes('lim-')){
@@ -115,6 +132,7 @@ getCohorts = () => {
   document.getElementById('sede').addEventListener('change', selectSede);
   document.getElementById('cohorts').addEventListener('change', selectCohort = () => {
     let cohortSelected= document.querySelector('#cohorts').value;
+      
       for (const cohor of cohorts){
         if (cohor.id == cohortSelected){
           cohort= cohor;
@@ -154,7 +172,7 @@ getProgress = (cohort, usersCohort) =>{
 
     const options = { //este objeto es el que piden para la funcion que engloba las 3 funciones en el data.js
       cohort: cohort,
-      cohortData: {55555555
+      cohortData: {
       users: usersCohort, 
       progress: usersProgress
       },
@@ -210,7 +228,6 @@ getProgress = (cohort, usersCohort) =>{
     document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
       options.search = document.getElementById('myInput').value;
       newFilter = processCohortData(options);
-      console.log(newFilter);
       deleteUsers();
        for (const newfil of newFilter){
             createCard(newfil);
@@ -228,5 +245,3 @@ cohortsRequest.open('GET', requestURLCohorts);
 cohortsRequest.onload = getCohorts;
 cohortsRequest.onerror = handleError;
 cohortsRequest.send();
-
-
