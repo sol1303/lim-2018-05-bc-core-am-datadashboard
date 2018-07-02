@@ -207,9 +207,9 @@ window.sortUsers = (users, orderBy, orderDirection) => {
    };
    if (orderBy == 'Ejercicios Completados') {
     dataSort = users.sort((objt1, objt2) => {
-     if (objt1.stats.exercises.completed < objt2.stats.exercises.completed) {
+     if (objt1.stats.exercises.percent < objt2.stats.exercises.percent) {
        return 1
-   } else if (objt1.stats.exercises.completed > objt2.stats.exercises.completed) {
+   } else if (objt1.stats.exercises.percent > objt2.stats.exercises.percent) {
        return -1
    }
        return 0
@@ -223,9 +223,9 @@ window.sortUsers = (users, orderBy, orderDirection) => {
    };
    if (orderBy == 'Quizzes Completados') {
     dataSort = users.sort((objt1, objt2) => {
-     if (objt1.stats.quizzes.completed < objt2.stats.quizzes.completed) {
+     if (objt1.stats.quizzes.percent < objt2.stats.quizzes.percent) {
        return 1
-   } else if (objt1.stats.quizzes.completed > objt2.stats.quizzes.completed) {
+   } else if (objt1.stats.quizzes.percent > objt2.stats.quizzes.percent) {
        return -1
    }
        return 0
@@ -254,9 +254,9 @@ window.sortUsers = (users, orderBy, orderDirection) => {
    };
    if (orderBy == 'Lecturas Completadas') {
     dataSort = users.sort((objt1, objt2) => {
-     if (objt1.stats.reads.completed < objt2.stats.reads.completed) {
+     if (objt1.stats.reads.percent < objt2.stats.reads.percent) {
        return 1
-   } else if (objt1.stats.reads.completed > objt2.stats.reads.completed) {
+   } else if (objt1.stats.reads.percent > objt2.stats.reads.percent) {
        return -1
    }
        return 0

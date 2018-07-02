@@ -111,7 +111,7 @@ describe('data', () => {
         },
         reads : {
           total: 10,
-          completed: 7,
+          completed: 2,
           percent: 20
         },
         quizzes : {
@@ -130,7 +130,7 @@ describe('data', () => {
         exercises : {
           total: 8,
           completed: 3,
-          percent: 80
+          percent: 70
         },
         reads : {
           total: 10,
@@ -170,22 +170,22 @@ describe('data', () => {
       
     });
     it('debería retornar arreglo de usuarios ordenado por ejercicios completados ASC' , () => {
-      assert.deepEqual(sortUsers(usersTest, "Ejercicios Completados", "Asc"), [user2,user1,user3]);
+      assert.deepEqual(sortUsers(usersTest, "Ejercicios Completados", "Asc"), [user2,user3,user1]);
       
     });
     it('debería retornar arreglo de usuarios ordenado por ejercicios completados DESC' , () => {
-      assert.deepEqual(sortUsers(usersTest, "Ejercicios Completados", "Desc"), [user3,user1,user2]);
+      assert.deepEqual(sortUsers(usersTest, "Ejercicios Completados", "Desc"), [user1,user3,user2]);
       
       
       
     });
     it('debería retornar arreglo de usuarios ordenado por quizzes completados ASC' , () => {
-      assert.deepEqual(sortUsers(usersTest, "Quizzes Completados", "Asc"), [user2,user1,user3]);
+      assert.deepEqual(sortUsers(usersTest, "Quizzes Completados", "Asc"), [user1,user3,user2]);
      
       
     });
     it('debería retornar arreglo de usuarios ordenado por quizzes completados DESC' , () => {
-      assert.deepEqual(sortUsers(usersTest, "Quizzes Completados", "Desc"), [user3,user1,user2]);
+      assert.deepEqual(sortUsers(usersTest, "Quizzes Completados", "Desc"), [user2,user3,user1]);
     });
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC' , () => {
       assert.deepEqual(sortUsers(usersTest, "Puntuación de Quizzes", "Asc"), [user1,user3,user2]);
@@ -197,12 +197,12 @@ describe('data', () => {
     });
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC' , () => {
      
-      assert.deepEqual(sortUsers(usersTest, "Lecturas Completadas", "Asc"), [user2,user1,user3]);
+      assert.deepEqual(sortUsers(usersTest, "Lecturas Completadas", "Asc"), [user1,user3,user2]);
       
     });
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas DESC' , () => {
      
-      assert.deepEqual(sortUsers(usersTest, "Lecturas Completadas", "Desc"), [user3,user1,user2]);
+      assert.deepEqual(sortUsers(usersTest, "Lecturas Completadas", "Desc"), [user2,user3,user1]);
       
     });
 
