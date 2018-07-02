@@ -213,7 +213,7 @@ getProgress = (cohort, usersCohort) =>{
     document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
       options.search = document.getElementById('myInput').value;
       newFilter = processCohortData(options);
-      console.log(newFilter);
+    
       deleteUsers();
        for (const newfil of newFilter){
             createCard(newfil);
