@@ -60,13 +60,30 @@ Debido a que los principales usuarios son trabajadores de Laboratoria, el diseñ
 
 El primer Sketch de la interfaz está dividido en dos partes. Como se mencionó anteriormente se pensó primero en diseñar una interfaz en la cual el usuario en un primer momento seleccionara el cohort que desee visualizar para que luego se le mostrase de una manera más sencilla toda la información relevante de ese cohort seleccionado. Por lo que la primera parte de la interfaz tendrá en la parte central un área donde el usuario deberá seleccionar el cohort de la siguiente manera: Primero deberá seleccionar a qué sede (Lima, Ciudad de Mexico, Santiago de Chile, etc) pertenece el cohort al que quiere acceder, luego seleccionaría el tipo de producto del cohort (esta información sobre el tipo de "producto" se supo a partir de la entrevista que se tuvo con la usuaria principal) de los cuales puede ser "bootcamp", "pre-selección", etc. El usuario también tendría que escoger la promoción y por último el turno. Todo esto con la finalidad de que llegue al cohort que quiera seleccionar y poder acceder a la información de este.
 
+![PrimerPrototipo](Imagenes%20Readme/primerprototipobajafidelidad.jpg)
+
 La segunda parte de la interfaz vendría a ser ya el datadashboard el cual tendría un menú al lado izquierdo con información relevante del usuario (foto referencial del usuario y su nombre). En la parte central de la interfaz de la datadashboard se visualizará la información requerida por el usuario. Cabe resaltar que en la parte superior de la interfaz hay 3 pestañas, las cuales el usuario podrá escoger si quiere visualizar la información por alumna, por curso y de manera general. 
 
-Luego de haber diseñado el primer sketch de baja fidelidad, se realizaron entrevistas a dos usuarias y testing a una. Se recibieron observaciones relevantes y feedback interesante por lo que se hizo un cambio en la interfaz de la datadashboard puesto que nuestro primer sketch de baja fidelidad estaba pensada para la hacker edition (contendría graficos). Así que se diseñó nuevamente de tal forma que se centrara en lo minimo requerido por el proyecto, es decir, mostrar la información relevante de cada alumna perteneciente a un cohort.  
+![PrimerPrototipoparteDatadashboard](Imagenes%20Readme/sketch2Bajafidelidad2.jpg)
+
+Luego de haber diseñado el primer sketch de baja fidelidad, se realizaron entrevistas a dos usuarias y testing a una. Se recibieron observaciones relevantes y feedback interesante por lo que se hizo un cambio en la interfaz de la datadashboard.
+
+![SegundoPrototipoparteDatadashboard](Imagenes%20Readme/segundoprototipobajafidelidad.jpg)
+
+Se recibió un segundo feedback y se realizó un tercer cambio más relevante en el diseño puesto que nuestro primer y segundo sketch de baja fidelidad estaba pensada para la hacker edition (contendría graficos). Así que se diseñó nuevamente de tal forma que se centrara en lo minimo requerido por el proyecto, es decir, mostrar la información relevante de cada alumna perteneciente a un cohort.  
+
+![TercerPrototipoparteDatadashboard](Imagenes%20Readme/tercerprototipobajafidelidad.jpg)
+
+
 
 #### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
-Luego de diseñar el segundo y final prototipo de baja fidelidad, se procedió a pasarlo a alta fidelidad en Figma. 
+Luego de diseñar el tercer y final prototipo de baja fidelidad, se procedió a pasarlo a alta fidelidad en Figma. 
+
+![figma1](Imagenes%20Readme/altafidelidadfigma.png)
+
+![figma2](Imagenes%20Readme/altafidelidadfigma2.png)
+
 
 
 Sin embargo, en la segunda semana se decidió modificar la primera interfaz donde se seleccionaba el cohort. Se optó a que el usuario seleccionara solamente la sede del cohort y luego le cargaría una lista de los cohorts pertenecientes a esa sede, de tal forma el usuario terminaria escogiendo el cohort de esa manera y luego para acceder a la información de este, solo tendría que apretar el boton de ingreso. Esta nueva implementación se realizó directamente en el CSS y HTML puesto que el prototipo de alta fidelidad y el diseño de la interfaz estática se realizaron en la primera semana del proyecto.
