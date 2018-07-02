@@ -17,15 +17,15 @@ let  createCard = (users) => {
   row.appendChild(cellName);
 
 /*first row*/
-cell = createCardCell(users.stats.percent);
+cell = createCardCell(users.stats.percent + '%');
 row.appendChild(cell);
 
 /*second row*/
-cell = createCardCell(users.stats.exercises.completed);
+cell = createCardCell(users.stats.exercises.percent + '%');
 row.appendChild(cell);
 
 /*third row*/
-cell = createCardCell(users.stats.quizzes.completed);
+cell = createCardCell(users.stats.quizzes.percent + '%');
 row.appendChild(cell);
 
 /*fourth row*/
@@ -33,7 +33,7 @@ cell = createCardCell(users.stats.quizzes.scoreSum);
 row.appendChild(cell);
  
 /*fith row*/
-cell = createCardCell(users.stats.reads.completed);
+cell = createCardCell(users.stats.reads.percent + '%');
 row.appendChild(cell);
 
 /*button*/
@@ -228,6 +228,7 @@ getProgress = (cohort, usersCohort) =>{
     document.getElementById('myInput').addEventListener('keyup', filterCohort = () =>{ 
       options.search = document.getElementById('myInput').value;
       newFilter = processCohortData(options);
+    
       deleteUsers();
        for (const newfil of newFilter){
             createCard(newfil);
