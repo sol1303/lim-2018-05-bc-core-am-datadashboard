@@ -1,6 +1,6 @@
 $(document).ready(function(){
   debugger
-  $(".userInfo").click(function(){
+  $(".burguerNav").click(function(){
       $("div ul").toggleClass("show");
   });
 });

@@ -17,7 +17,6 @@
   display: table;
 }
 
-
 body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
@@ -48,30 +47,28 @@ img.iconUser {
 }
 
 .burguerMenu {
+  background: url(img/menu.png) no-repeat 98% center;
   display: none;
   text-align: left;
-    font-size: 1em;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0;
-    cursor: pointer;
-    display: block;
-    border: none;
-    width: 100%;  
+  font-size: 1em;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  border: none;
+  width: 100%;  
 }
 
 .burguerMenu ul {
   margin: 0;
   padding:0; 
+  list-style: none;
 }
 
 .burguerMenu li{
   padding: 0.5%;
   border-bottom: 0.035em solid #bebebe;
-}
-
-.burguerMenu ul {
-  list-style: none;
 }
 
 .buttonMenu  button{
@@ -328,7 +325,6 @@ td {
     }
 
   .userInfo {
-    background: url(img/menu.png) no-repeat 98% center;
     background-color: #fafafa;
     padding: 0%;
     border-bottom: 0.035em solid #bebebe;
